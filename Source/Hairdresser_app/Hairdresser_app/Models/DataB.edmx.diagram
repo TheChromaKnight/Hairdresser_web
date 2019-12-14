@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ec15465b72d6487c849d4f35f2bf5def" Name="Diagram1">
+        <EntityTypeShape EntityType="HairdresserModel.Appointments" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="HairdresserModel.Dates" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HairdresserModel.Service_Length" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HairdresserModel.Services" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="HairdresserModel.User_Rank" Width="1.5" PointX="5.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HairdresserModel.Users" Width="1.5" PointX="8" PointY="4.875" IsExpanded="true" />
+        <AssociationConnector Association="HairdresserModel.FK_Appointments_Dates" ManuallyRouted="false" />
+        <AssociationConnector Association="HairdresserModel.FK_Appointments_Services" ManuallyRouted="false" />
+        <AssociationConnector Association="HairdresserModel.FK_Services_Service_Length" ManuallyRouted="false" />
+        <AssociationConnector Association="HairdresserModel.FK_Users_User_Rank" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

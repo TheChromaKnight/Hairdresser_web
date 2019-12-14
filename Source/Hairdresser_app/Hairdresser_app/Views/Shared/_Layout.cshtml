@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="~/Content/favicon.ico" type="image/x-icon"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    
+
+    <!--Unique Styles-->
+    <link rel="stylesheet" href="~/Content/NavbarStyle.css" />
+    <link rel="stylesheet" href="~/Content/LoginAndRegisterStyle.css"/>
+</head>
+<body>
+
+    <!-- Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+
+        <!--Left-->
+        <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Index", "About")">About us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Index", "Services")">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Index", "Appointments")">Make an appointment</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Index", "Prices")">Prices</a>
+                </li>
+
+            </ul>
+        </div>
+
+        <!--Center-->
+        <div class="mx-auto order-0">
+            <!--Brand-->
+            <a class="navbar-brand mx-auto" href="@Url.Action("Index", "Home")">HairdresSir</a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+
+        <!--Right-->
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    @if (Session["userId"] != null)
+                    {
+                        <a class="nav-link login-link" href="@Url.Action("Logout", "Home")">Logout</a>
+                    }
+                    else
+                    {
+                        <a class="nav-link login-link" href="@Url.Action("Index", "Login")">Login</a>
+                    }
+
+
+                </li>
+
+            </ul>
+
+        </div>
+    </nav>
+    <!-- Navbar end-->
+
+
+    <div class="container body-content">
+        @RenderBody()
+        
+
+    </div>
+
+
+    <footer class="container-fluid">
+        <p class="address">&copy; @DateTime.Now.Year HairdresSir</p>
+        <p class="address">Benjámin Szakos</p>
+        <p class="address">1-5, Future Street,</p>
+        <p class="address">Tokyo Past District 4YZ</p>
+        <p class="address">Japan</p>
+    </footer>
+
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>

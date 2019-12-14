@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HairdresserModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Appointments">
+    <Key>
+      <PropertyRef Name="Appointment_Id" />
+    </Key>
+    <Property Name="Appointment_Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Appointment_Date_Id" Type="Int16" Nullable="false" />
+    <Property Name="Appointment_Exact_Time" Type="Time" Nullable="false" Precision="0" />
+    <Property Name="Appointment_Service_Id" Type="Byte" Nullable="false" />
+    <Property Name="Appointment_Reserved" Type="Boolean" />
+    <NavigationProperty Name="Dates" Relationship="Self.FK_Appointments_Dates" FromRole="Appointments" ToRole="Dates" />
+    <NavigationProperty Name="Services" Relationship="Self.FK_Appointments_Services" FromRole="Appointments" ToRole="Services" />
+  </EntityType>
+  <EntityType Name="Dates">
+    <Key>
+      <PropertyRef Name="Date_Id" />
+    </Key>
+    <Property Name="Date_Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date_Day" Type="DateTime" Precision="0" />
+    <Property Name="Free_Day" Type="Boolean" />
+    <NavigationProperty Name="Appointments" Relationship="Self.FK_Appointments_Dates" FromRole="Dates" ToRole="Appointments" />
+  </EntityType>
+  <EntityType Name="Service_Length">
+    <Key>
+      <PropertyRef Name="Service_Length_Id" />
+    </Key>
+    <Property Name="Service_Length_Id" Type="Byte" Nullable="false" />
+    <Property Name="Service_Length1" Type="Byte" Nullable="false" />
+    <NavigationProperty Name="Services" Relationship="Self.FK_Services_Service_Length" FromRole="Service_Length" ToRole="Services" />
+  </EntityType>
+  <EntityType Name="Services">
+    <Key>
+      <PropertyRef Name="Service_Id" />
+    </Key>
+    <Property Name="Service_Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Service_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Service_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Gender" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Service_Length_Id" Type="Byte" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+    <NavigationProperty Name="Appointments" Relationship="Self.FK_Appointments_Services" FromRole="Services" ToRole="Appointments" />
+    <NavigationProperty Name="Service_Length" Relationship="Self.FK_Services_Service_Length" FromRole="Services" ToRole="Service_Length" />
+  </EntityType>
+  <EntityType Name="User_Rank">
+    <Key>
+      <PropertyRef Name="User_Rank_Id" />
+    </Key>
+    <Property Name="User_Rank_Id" Type="Byte" Nullable="false" />
+    <Property Name="User_Rank_Title" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Users_User_Rank" FromRole="User_Rank" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="User_id" />
+    </Key>
+    <Property Name="User_id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="User_Password" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="User_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="User_Rank_Id" Type="Byte" Nullable="false" />
+    <NavigationProperty Name="User_Rank" Relationship="Self.FK_Users_User_Rank" FromRole="Users" ToRole="User_Rank" />
+  </EntityType>
+  <Association Name="FK_Appointments_Dates">
+    <End Role="Dates" Type="Self.Dates" Multiplicity="1" />
+    <End Role="Appointments" Type="Self.Appointments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dates">
+        <PropertyRef Name="Date_Id" />
+      </Principal>
+      <Dependent Role="Appointments">
+        <PropertyRef Name="Appointment_Date_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Appointments_Services">
+    <End Role="Services" Type="Self.Services" Multiplicity="1" />
+    <End Role="Appointments" Type="Self.Appointments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Services">
+        <PropertyRef Name="Service_Id" />
+      </Principal>
+      <Dependent Role="Appointments">
+        <PropertyRef Name="Appointment_Service_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Services_Service_Length">
+    <End Role="Service_Length" Type="Self.Service_Length" Multiplicity="1" />
+    <End Role="Services" Type="Self.Services" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service_Length">
+        <PropertyRef Name="Service_Length_Id" />
+      </Principal>
+      <Dependent Role="Services">
+        <PropertyRef Name="Service_Length_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_User_Rank">
+    <End Role="User_Rank" Type="Self.User_Rank" Multiplicity="1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_Rank">
+        <PropertyRef Name="User_Rank_Id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="User_Rank_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HairdresserEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Appointments" EntityType="Self.Appointments" />
+    <EntitySet Name="Dates" EntityType="Self.Dates" />
+    <EntitySet Name="Service_Length" EntityType="Self.Service_Length" />
+    <EntitySet Name="Services" EntityType="Self.Services" />
+    <EntitySet Name="User_Rank" EntityType="Self.User_Rank" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <AssociationSet Name="FK_Appointments_Dates" Association="Self.FK_Appointments_Dates">
+      <End Role="Dates" EntitySet="Dates" />
+      <End Role="Appointments" EntitySet="Appointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Appointments_Services" Association="Self.FK_Appointments_Services">
+      <End Role="Services" EntitySet="Services" />
+      <End Role="Appointments" EntitySet="Appointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Services_Service_Length" Association="Self.FK_Services_Service_Length">
+      <End Role="Service_Length" EntitySet="Service_Length" />
+      <End Role="Services" EntitySet="Services" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_User_Rank" Association="Self.FK_Users_User_Rank">
+      <End Role="User_Rank" EntitySet="User_Rank" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

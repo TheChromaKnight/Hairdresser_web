@@ -1,0 +1,98 @@
+﻿div .container {
+    background-color: #212529;
+}
+.form-title {
+    font-size: 30px;
+    cursor:default;
+}
+
+.change-site-button {
+    top: 0px;
+    right: 0px;
+    position: absolute;
+    padding: 5px;
+    font-size: 25px;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    background-color: blanchedalmond;
+    color: #212529;
+    transition: 250ms;
+}
+
+
+.change-site-button:hover {
+    background-color: #54e889;
+    color: black;
+    transition: 250ms;
+}
+
+.form-style {
+    text-align: center;
+    position: relative;
+    color: blanchedalmond;
+}
+
+.form-group {
+    margin: 10px 0px 20px 0px;
+}
+
+.form-labels {
+    font-size: 22px;
+    display: block;
+    float: left;
+}
+
+.form-inputs {
+    width: 100%;
+    padding: 5px;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    transition: 100ms;
+}
+
+.form-inputs:focus {
+    border: 2px solid #76bcf1;
+    border-radius: 6px;
+    transition: 100ms;
+    box-shadow: 0 0 8px #76bcf1;
+    }
+
+.error-message {
+    color: red;
+    float: left;
+    display: block;
+}
+ #error2{
+    float:none;
+}
+
+.validate-button {
+    background-color: #76bcf1;
+    color: white;
+    border: 0px solid #7299d0;
+    font-size: 25px;
+    width: 100px;
+    padding: 5px;
+    border-radius: 10px;
+    transition: 250ms;
+}
+
+.validate-button:hover {
+    background-color: #54e889;
+    color: black;
+    transition: 250ms;
+}
+@media screen and (max-width:600px) {
+    .form-title{
+        font-size:21px;
+    }
+    .change-site-button{
+        font-size:16px;
+    }
+    .form-labels{
+        font-size:16px;
+    }
+    .validate-button{
+        font-size:16px;
+    }
+}
