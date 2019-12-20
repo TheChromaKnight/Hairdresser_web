@@ -20,7 +20,7 @@ namespace Hairdresser_app.Controllers
         {
             using (HairdresserEntities db = new HairdresserEntities())
             {
-                var userDetails = db.Users.Where(x => x.User_Name == userModel.User_Name && x.User_Password == userModel.User_Password).FirstOrDefault();
+                var userDetails = db.Users.Where(x => x.User_Name == userModel.User_Name).FirstOrDefault();
                 
                 if(userDetails == null)
                 {

@@ -1,0 +1,81 @@
+﻿@model Hairdresser_app.Models.Users
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container p-3 my-3 text-white">
+    <div class="form-style">
+        @using (Html.BeginForm("ValidateRegister", "Register", FormMethod.Post))
+        {
+            <div class="form-title">
+                Sign Up
+            </div>
+            <button onclick="location.href='@Url.Action("Index", "Login")'; return false;" class="change-site-button">
+                Login
+            </button>
+            <br />
+
+
+            <!-- User Name-->
+            <div class="form-group">
+                @Html.LabelFor(model => model.User_Name, new { @class = "form-labels" })
+                @Html.EditorFor(model => model.User_Name, new { htmlAttributes = new { @class = "form-inputs", placeholder = Html.DisplayNameFor(model => model.User_Name) } })
+                <span class="error-message">
+                    @Html.ValidationMessageFor(model => model.User_Name)
+                </span>
+                <br />
+                <br />
+            </div>
+
+
+            <!--Email -->
+            <div class="form-group">
+                @Html.LabelFor(model => model.User_Email, new { @class = "form-labels" })
+                @Html.EditorFor(model => model.User_Email, new { htmlAttributes = new { @class = "form-inputs", placeholder = Html.DisplayNameFor(model => model.User_Email) } })
+                <span class="error-message">
+                    @Html.ValidationMessageFor(model => model.User_Email)
+                </span>
+                <br />
+                <br />
+            </div>
+
+
+            <!--Password-->
+            <div class="form-group">
+                @Html.LabelFor(model => model.User_Password, new { @class = "form-labels" })
+                @Html.EditorFor(model => model.User_Password, new { htmlAttributes = new { @class = "form-inputs", placeholder = Html.DisplayNameFor(model => model.User_Password) } })
+                <span class="error-message">
+                    @Html.ValidationMessageFor(model => model.User_Password)
+                </span>
+                <br />
+                <br />
+            </div>
+
+            <!--Password confirm-->
+            <div class="form-group">
+                @Html.LabelFor(model => model.Password_Confirm, new { @class = "form-labels" })
+                @Html.EditorFor(model => model.Password_Confirm, new { htmlAttributes = new { @class = "form-inputs", placeholder = Html.DisplayNameFor(model => model.Password_Confirm) } })
+
+                <span class="error-message">
+                    @Html.ValidationMessageFor(model => model.Password_Confirm)
+                </span>
+                <br />
+                <br />
+            </div>
+
+
+
+            <span class="error-message" id="error2">
+                @Html.DisplayFor(model => model.User_Name_Errormessage)
+            </span>
+            <br />
+            <input type="submit" name="name" value="Login" class="validate-button" />
+
+
+
+        }
+    </div>
+
+</div>
+

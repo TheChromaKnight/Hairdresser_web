@@ -17,26 +17,33 @@ namespace Hairdresser_app.Models
     public partial class Users
     {
         public short User_id { get; set; }
+
         [DisplayName("User name")]
         [Required(ErrorMessage = "The User name field cannot be empty!")]
         [StringLength(30, MinimumLength =5, ErrorMessage = "The User name must be within the range of 4 and 30 characters!")]
         public string User_Name { get; set; }
+
         [DisplayName("Password")]
         [DataType(DataType.Password)]
         [StringLength(16, MinimumLength = 5, ErrorMessage ="The Password must be within the range of 5 and 16 characters!")]
         [Required(ErrorMessage = "The Password field cannot be empty!")]
         public string User_Password { get; set; }
+
+        [DisplayName("Confirm Password")]
+        [DataType(DataType.Password)]
+        [Compare("User_Password", ErrorMessage = "The passwords don't match!")]
+        public string Password_Confirm { get; set; }
+
         [DisplayName("Email")]
         [Required(ErrorMessage = "The Email field cannot be empty!")]
         [DataType(DataType.EmailAddress, ErrorMessage = "Invalid email!")]
         public string User_Email { get; set; }
+
         public byte User_Rank_Id { get; set; }
     
         public virtual User_Rank User_Rank { get; set; }
 
         //Error messages
         public String User_Name_Errormessage { get; set; }
-        public String Password_Errormessage { get; set; }
-        public String Email_Errormessage { get; set; }
     }
 }

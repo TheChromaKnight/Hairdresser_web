@@ -1,0 +1,22 @@
+﻿footer {
+    background-color: #212529;
+    position:fixed;
+    bottom: 0px;
+    width: 100%;
+    color: blanchedalmond;
+}
+.address {
+    font-weight: 600;
+    padding-left: 30px;
+}
+@media screen and (max-width:600px) {
+    body {
+        font-size: 14px;
+    }
+
+    .address {
+        font-size: 12px;
+        display: inline;
+    }
+
+}

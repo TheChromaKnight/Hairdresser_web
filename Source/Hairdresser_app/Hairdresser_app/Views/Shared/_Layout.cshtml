@@ -13,6 +13,7 @@
     <!--Unique Styles-->
     <link rel="stylesheet" href="~/Content/NavbarStyle.css" />
     <link rel="stylesheet" href="~/Content/LoginAndRegisterStyle.css"/>
+    <link rel="stylesheet" href="~/Content/FooterStyle.css"/>
 </head>
 <body>
 
@@ -74,19 +75,26 @@
     <!-- Navbar end-->
 
 
+    <!--Place of Content-->
     <div class="container body-content">
         @RenderBody()
         
 
     </div>
 
+    <!--White space is needed because the footer would otherwise overlap the content-->
+    <div class="white-space">
 
-    <footer class="container-fluid">
-        <p class="address">&copy; @DateTime.Now.Year HairdresSir</p>
-        <p class="address">Benjámin Szakos</p>
-        <p class="address">1-5, Future Street,</p>
-        <p class="address">Tokyo Past District 4YZ</p>
-        <p class="address">Japan</p>
+    </div>
+    
+
+    <!-- Footer -->
+    <footer >
+        <span class="address">&copy; @DateTime.Now.Year HairdresSir</span>
+        <span class="address">Benjámin Szakos</span>
+        <span class="address">1-5, Future Street,</span>
+        <span class="address">Tokyo Past District 4YZ</span>
+        <span class="address">Japan</span>
     </footer>
 
     <script src="~/Scripts/jquery.validate.min.js"></script>

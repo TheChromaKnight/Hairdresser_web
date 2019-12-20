@@ -2,6 +2,10 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    if(Session["userId"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
 }
 
 <h2>WElcome back @Session["userId"].ToString()</h2>
